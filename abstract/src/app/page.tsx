@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Inter } from '@next/font/google';
-import ThemeToggler from "./Components/theme-toggler";
+import Header from "./Components/header";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -8,8 +8,8 @@ const inter = Inter({
 
 export default function Home() {
   return (
-    <main className="flex items-center justify-center h-screen bg-slate-100 dark:bg-slate-950">
-      <ThemeToggler/>
+    <main className="px-12 flex flex-col pt-7 h-screen bg-slate-50 dark:bg-slate-950">
+      <Header/>
     </main>
   );
 }
