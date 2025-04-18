@@ -8,8 +8,8 @@ const inter = Inter({
 
 export default function Home() {
   return (
-    <main className="px-12 flex flex-col pt-7 h-screen bg-slate-50 dark:bg-slate-950">
-      <Header/>
+    <main className="px-5 flex flex-col pt-7 h-screen bg-slate-50 dark:bg-slate-950">
+      <Header />
     </main>
   );
 }
