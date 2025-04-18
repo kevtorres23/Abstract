@@ -13,7 +13,6 @@ function Header() {
 
     return (
         <div className="w-full flex flex-col sm:flex-row items-center sm:justify-between h-auto">
-            {/* Fila superior en sm, columna en md+ */}
             <div className="w-full flex justify-between items-center sm:w-auto">
                 <Image
                     src={theme === "dark" ? lightLogoSrc : darkLogoSrc}

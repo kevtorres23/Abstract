@@ -13,6 +13,8 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --color-main-blue: #2B4DE6;
+  --color-gray-between: #EBF0FB;
+  --color-gray-between-dark: #091023;
 }
 
 body {
