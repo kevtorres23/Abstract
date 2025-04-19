@@ -9,7 +9,7 @@ type taskProps = {
 
 function TaskCard(props: taskProps) {
     return(
-        <div className="w-full p-6 gap-5 flex flex-col bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg">
+        <div className="w-full sm:p-6 p-4 gap-5 flex flex-col bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg">
             <div className="etiquetas w-full flex flex-row gap-2">
                 
             </div>
