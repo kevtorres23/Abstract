@@ -16,6 +16,7 @@
   --color-main-blue-15: rgba(43, 77, 230, 0.15);
   --color-gray-between: #EBF0FB;
   --color-gray-between-dark: #091023;
+  --color-modal-background: rgba(2, 6, 24, 0.75);
 }
 
 body {

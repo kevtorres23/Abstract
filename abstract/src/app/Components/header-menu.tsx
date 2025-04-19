@@ -1,4 +1,6 @@
 import { Box, History } from 'lucide-react';
+import MyTagsModal from './my-tags-modal';
+import TaskHistoryModal from './task-history-modal';
 
 function HeaderMenu() {
     return(
@@ -7,13 +9,9 @@ function HeaderMenu() {
             dark:bg-slate-700 dark:text-slate-300"
             />
 
-            <button className="bg-main-blue p-2 rounded-lg self-center hover:opacity-80 cursor-pointer">
-                <Box className="text-slate-50" size={20}/>
-            </button>
+            <MyTagsModal />
 
-            <button className="bg-main-blue p-2 rounded-lg self-center hover:opacity-80 cursor-pointer">
-                <History className="text-slate-50" size={20}/>
-            </button>
+            <TaskHistoryModal />
         </div>
     )
 }

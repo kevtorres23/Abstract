@@ -25,10 +25,10 @@ function PlaceholderTask(props: placeholderTaskProps) {
             <div className="contenido w-full flex flex-col gap-5">
                 <div className="p-2 rounded-lg bg-main-blue-15 self-start">{iconVariants[props.type]}</div>
                 <p className="text-slate-600 dark:text-slate-400 text-sm font-normal">{descriptionVariants[props.type]}</p>
-                <div className="flex gap-3 items-center justify-center flex-row py-2.5 cursor-pointer rounded-lg bg-main-blue">
+                <button className="flex gap-3 items-center justify-center flex-row py-2.5 cursor-pointer rounded-md bg-main-blue">
                     <Plus className="text-white cursor-pointer" size={16} />
                     <p className="text-white text-xs">Agregar una tarea</p>
-                </div>
+                </button>
             </div>
         </div>
     )
