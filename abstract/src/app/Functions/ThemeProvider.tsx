@@ -12,6 +12,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     useEffect(() => {
         if (theme === "dark") {
             document.documentElement.classList.add("dark");
+            const datePicker = document.getElementById("date-picker");
+            datePicker?.setAttribute("style", "color-scheme: dark;");
         } else {
             document.documentElement.classList.remove("dark");
         }

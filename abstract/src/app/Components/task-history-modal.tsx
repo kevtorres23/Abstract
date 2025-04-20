@@ -13,7 +13,7 @@ function TaskHistoryModal() {
 
     return (
         <>
-            <button onClick={toggleModal} className="bg-main-blue p-2 rounded-lg self-center hover:opacity-80 cursor-pointer">
+            <button onClick={toggleModal} title="Historial de tareas" className="bg-main-blue p-2 rounded-lg self-center hover:opacity-80 cursor-pointer">
                 <History className="text-slate-50" size={20} />
             </button>
 

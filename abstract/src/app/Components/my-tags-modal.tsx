@@ -13,7 +13,7 @@ function MyTagsModal() {
 
     return (
         <>
-            <button onClick={toggleModal} className="bg-main-blue p-2 rounded-lg self-center hover:opacity-80 cursor-pointer">
+            <button onClick={toggleModal} title="Mis etiquetas" className="bg-main-blue p-2 rounded-lg self-center hover:opacity-80 cursor-pointer">
                 <Box className="text-slate-50" size={20} />
             </button>
 

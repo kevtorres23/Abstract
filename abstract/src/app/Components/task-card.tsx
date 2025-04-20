@@ -1,10 +1,10 @@
 import { Calendar, SquarePen, ArrowLeftRight, Trash } from "lucide-react";
-
 import Tags from "./tags";
 
 type taskProps = {
     title: string,
-    description: string
+    description: string,
+    date: string
 }
 
 function TaskCard(props: taskProps) {
@@ -22,7 +22,7 @@ function TaskCard(props: taskProps) {
             <div className="flex lg:flex-row md:flex-col flex-row gap-3 w-full lg:items-center md:items-start items-center justify-between">
                 <div className="fecha-limite px-2 py-1.5 flex flex-row gap-1 bg-slate-200 dark:bg-slate-800 cursor-pointer rounded-sm">
                     <Calendar className="text-slate-600 dark:text-slate-300" size={14}/>
-                    <p className="text-slate-600 dark:text-slate-300 text-xs font-normal">8 de mayo del 2025</p>
+                    <p className="text-slate-600 dark:text-slate-300 text-xs font-normal">{props.date}</p>
                 </div>
 
                 <div className="acciones flex flex-row gap-2">

@@ -1,6 +1,5 @@
 type tagsProps = {
     name: string,
-    color: string
 }
 
 function Tags(props: tagsProps) {
