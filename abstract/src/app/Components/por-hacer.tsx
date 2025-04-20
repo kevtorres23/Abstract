@@ -2,8 +2,14 @@
 import React, { useState } from "react";
 import SectionName from "./section-name";
 import { ArrowDownWideNarrow, Plus, Check, ArrowLeft } from "lucide-react"
-import TaskCard from "./task-card";
+import { Calendar, SquarePen, ArrowLeftRight, Trash } from "lucide-react";
 import Tags from "./tags";
+
+interface Task {
+    title: string,
+    description: string,
+    date: string
+}
 
 function SeccionPorHacer() {
     const [taskStatus, setTaskStatus] = useState("default");
@@ -14,7 +20,7 @@ function SeccionPorHacer() {
     const [taskDate, setTaskDate] = useState("");
 
     // listas de tareas
-    const [lista, setLista] = useState<React.ReactElement[]>([]);
+    const [lista, setLista] = useState<Task[]>([]);
 
     function handleTitleChange(e: any) {
         setTaskTitle(e.target.value);
@@ -38,8 +44,18 @@ function SeccionPorHacer() {
 
     function handleAddTask() {
         setTaskStatus("filled");
-        const newTask = <TaskCard title={taskTitle} description={taskDesc} date={taskDate}/>;
+        const newTask = {
+            title: taskTitle,
+            description: taskDesc,
+            date: taskDate
+        };
+
         setLista(l => [...l, newTask]);
+    }
+
+    function handleRemoveTask(index: any) {
+        setLista(lista.filter((_, i) => i !== index));
+        setTaskStatus("default");
     }
 
     if (lista.length === 0 && taskStatus === "default") {
@@ -91,7 +107,6 @@ function SeccionPorHacer() {
                                 <p className="font-medium text-[13px] text-slate-500">Fecha límite</p>
                                 <input onChange={handleDateChange} type="date" id="date-picker" className="text-slate-800 dark:text-slate-300 text-[13px] font-normal px-2 py-1.5 flex flex-row gap-1 bg-gray-200 dark:bg-slate-800 cursor-pointer rounded-sm"></input>
                             </div>
-
                         </div>
 
                         <div className="px-5 pb-6 flex flex-row gap-3">
@@ -108,11 +123,35 @@ function SeccionPorHacer() {
                 </div>
             </div>
         )
-    } else {
+    } else if (lista.length >= 1) {
         return (
             <div className="w-full flex flex-col gap-5">
                 <SectionName name="Por hacer" taskCounter={1} />
-                {lista.map((tarea, index) => <ul className="list-none"><li key={index}>{tarea}</li></ul>)}
+                {lista.map((tarea, index) => <li key={index}>
+                    <div className="w-full sm:p-6 p-4 gap-5 flex flex-col bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg">
+                        <div className="etiquetas w-full flex flex-row gap-2">
+
+                        </div>
+
+                        <div className="contenido w-full flex flex-col gap-1">
+                            <h1 className="text-slate-800 dark:text-slate-300 text-md font-bold">{tarea.title}</h1>
+                            <p className="text-slate-600 dark:text-slate-400 text-sm font-normal">{tarea.description}</p>
+                        </div>
+
+                        <div className="flex lg:flex-row md:flex-col flex-row gap-3 w-full lg:items-center md:items-start items-center justify-between">
+                            <div className="fecha-limite px-2 py-1.5 flex flex-row gap-1 bg-slate-200 dark:bg-slate-800 cursor-pointer rounded-sm">
+                                <Calendar className="text-slate-600 dark:text-slate-300" size={14} />
+                                <p className="text-slate-600 dark:text-slate-300 text-xs font-normal">{tarea.date}</p>
+                            </div>
+
+                            <div className="acciones flex flex-row gap-2">
+                                <SquarePen className="text-slate-600 dark:text-slate-300 hover:text-main-blue cursor-pointer" size={16} />
+                                <ArrowLeftRight className="text-slate-600 dark:text-slate-300 hover:text-main-blue cursor-pointer" size={16} />
+                                <Trash onClick={() => handleRemoveTask(index)} className="text-slate-600 dark:text-slate-300 hover:text-main-blue cursor-pointer" size={16} />
+                            </div>
+                        </div>
+                    </div>
+                </li>)}
             </div>
         )
     }
