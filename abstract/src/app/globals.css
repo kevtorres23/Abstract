@@ -24,3 +24,7 @@ body {
   color: var(--foreground);
   font-family: 'Inter';
 }
+
+ul, li {
+  list-style-type: none;
+}

@@ -1,7 +1,7 @@
 import { ChevronUp, Plus } from 'lucide-react';
 
 type sectionProps = {
-    name: string,
+    name: React.ReactNode,
     taskCounter: number
 }
 
