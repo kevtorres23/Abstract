@@ -93,16 +93,14 @@ function TaskSection(props: TaskProps) {
         setLista(l => [...l, newTask]);
     }
 
-    // escribir una función que recibe el prop de la sección escogida en el componente SectionName
-    function handleTaskMovement() {
-
+    function handleMoveTask(newSection: string, index: number) {
+        console.log("From", props.sectionName, "to", newSection);
     }
 
     function handleRemoveTask(index: any) {
         let confirmacion = confirm("¿Estás seguro de que quieres eliminar esta tarea?")
         if (confirmacion) {
             setLista(lista.filter((_, i) => i !== index));
-            console.log(taskStatus)
         } else {
             return;
         }
@@ -188,7 +186,7 @@ function TaskSection(props: TaskProps) {
 
                                     <div className="acciones flex flex-row gap-2">
                                         <SquarePen className="text-slate-600 dark:text-slate-300 hover:text-main-blue cursor-pointer" size={16} />
-                                        <MoveTaskBtn selectedSection={handleTaskMovement}/>
+                                        <MoveTaskBtn onSectionChange={handleMoveTask} taskIndex={index}/>
                                         <Trash onClick={() => handleRemoveTask(index)} className="text-slate-600 dark:text-slate-300 hover:text-main-blue cursor-pointer" size={16} />
                                     </div>
                                 </div>
@@ -219,7 +217,7 @@ function TaskSection(props: TaskProps) {
 
                                     <div className="acciones flex flex-row gap-2">
                                         <SquarePen className="text-slate-600 dark:text-slate-300 hover:text-main-blue cursor-pointer" size={16} />
-                                        <MoveTaskBtn selectedSection={handleTaskMovement}/>
+                                        <MoveTaskBtn onSectionChange={handleMoveTask} taskIndex={index} />
                                         <Trash onClick={() => handleRemoveTask(index)} className="text-slate-600 dark:text-slate-300 hover:text-main-blue cursor-pointer" size={16} />
                                     </div>
                                 </div>

@@ -2,36 +2,33 @@
 import React, { useState } from 'react';
 import { ArrowLeftRight, NotebookPen, BookCheck } from 'lucide-react';
 
-type Sections = "porHacer" | "enProceso" | "terminadas";
-
 type btnProps = {
-    selectedSection?: (section: Sections) => void
+    onSectionChange: (newSection: TaskSection, index: number) => void;
+    taskIndex: number;
 };
 
+type TaskSection = "porHacer" | "enProceso" | "terminadas";
+
 function MoveTaskBtn(props: btnProps) {
+    const [sectionName, setSectionName] = useState("");
     const [sectionMenu, setSectionMenu] = useState(false);
 
-    const [section, setSection] = useState("");
-
     function sendToPorHacer() {
-        setSection("porHacer");
-        if (props.selectedSection) {
-            props.selectedSection("porHacer");
-        }
+        const name1 = "porHacer";
+        setSectionName(name1);
+        props.onSectionChange(name1, props.taskIndex);
     }
 
     function sendToEnProceso() {
-        setSection("enProceso");
-        if (props.selectedSection) {
-            props.selectedSection("enProceso");
-        }
+        const name2 = "enProceso";
+        setSectionName(name2);
+        props.onSectionChange(name2, props.taskIndex);
     }
 
     function sendToTerminadas() {
-        setSection("Terminadas");
-        if (props.selectedSection) {
-            props.selectedSection("terminadas");
-        }
+        const name3 = "terminadas";
+        setSectionName(name3);
+        props.onSectionChange(name3, props.taskIndex);
     }
 
     function handleMoveTask() {

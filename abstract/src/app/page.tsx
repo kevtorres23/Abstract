@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Inter } from '@next/font/google';
 import Header from "./Components/header";
-import TaskSection from "./Components/tasks";
+import Tasks from "./Components/tasks";
 
 export default function Home() {
 
@@ -12,11 +12,11 @@ export default function Home() {
 
       {/* Secciones y Tareas */}
       <div className="w-full h-full flex md:flex-row justify-between lg:gap-16 gap-10 flex-col lg:px-24 sm:px-0">
-        <TaskSection sectionName="porHacer" />
+        <Tasks sectionName="porHacer" />
 
-        <TaskSection sectionName="enProceso" />
+        <Tasks sectionName="enProceso" />
 
-        <TaskSection sectionName="terminadas"/>
+        <Tasks sectionName="terminadas"/>
       </div>
     </main>
   );
