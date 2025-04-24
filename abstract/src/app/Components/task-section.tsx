@@ -14,34 +14,46 @@ interface Task {
 }
 
 // los tres diferentes tipos de secciones que se manejan en la apps
-type TaskSection = "porHacer" | "enProceso" | "terminadas";
+type sectionName = "porHacer" | "enProceso" | "terminadas";
+
+type taskListName = "porHacerList" | "enProcesoList" | "terminadasList";
 
 // los tres diferentes estados que puede tener una card: 1 para "default", 2 para "editable", 3 para "filled" (llenada);
 type TaskStatus = "default" | "editable" | "filled";
 
 // variantes que pueden tener las descripciones de cada sección
-const descriptionVariants: Record<TaskSection, string> = { //TaskSection: porHacer, enProceso, terminadas || string: "Añade o mueve..."
+const descriptionVariants: Record<sectionName, string> = { //sectionName: porHacer, enProceso, terminadas || string: "Añade o mueve..."
     porHacer: "Añade o mueve a esta sección las tareas en las que aún no has empezado a trabajar aún.",
     enProceso: "Añade o mueve a esta sección las tareas en las que te encuentras trabajando actualmente.",
     terminadas: "Añade o mueve a esta sección las tareas que ya fueron completadas o entregadas."
 };
 
 // variantes que pueden tener los íconos de cada sección
-const iconVariants: Record<TaskSection, React.ReactNode> = {
+const iconVariants: Record<sectionName, React.ReactNode> = {
     porHacer: <ArrowDownWideNarrow className="text-main-blue hover:text-main-blue cursor-pointer" size={20} />,
     enProceso: <NotebookPen className="text-main-blue hover:text-main-blue cursor-pointer" size={20} />,
     terminadas: <BookCheck className="text-main-blue hover:text-main-blue cursor-pointer" size={20} />,
 };
 
 // variantes que pueden tener los nombres de cada sección
-const sectionNameVariants: Record<TaskSection, React.ReactNode> = {
+const sectionNameVariants: Record<sectionName, React.ReactNode> = {
     porHacer: "Por hacer",
     enProceso: "En proceso",
     terminadas: "Terminadas",
 }
 
+type movementData = {
+    currentSection: sectionName,
+    newSection: sectionName,
+    index: any,
+}
+
 type TaskProps = {
-    sectionName: TaskSection;
+    sectionName: sectionName,
+    taskList: Task[],
+    onAdditionRequest: (task: Task, sectionName: sectionName) => void,
+    onRemovalRequest: (index: number, taskSection: sectionName) => void,
+    onMovementRequest: (movementTaskData: movementData) => void,
 }
 
 function TaskSection(props: TaskProps) {
@@ -54,13 +66,22 @@ function TaskSection(props: TaskProps) {
     const [taskDate, setTaskDate] = useState("");
 
     // listas de tareas
-    const [lista, setLista] = useState<Task[]>([]);
+    const [lista, setLista] = useState<Task[]>(props.taskList);
 
     useEffect(() => {
         if (lista.length === 0) {
             setTaskStatus("default");
-        }
+        };
+
+        if (lista.length >= 1) {
+            setTaskStatus("filled");
+        };
+        
     }, [lista]);
+
+    useEffect(() => {
+        setLista(props.taskList);
+    }, [props.taskList]);
 
     function handleTitleChange(e: any) {
         setTaskTitle(e.target.value);
@@ -90,20 +111,21 @@ function TaskSection(props: TaskProps) {
             date: taskDate
         };
 
-        setLista(l => [...l, newTask]);
+        props.onAdditionRequest(newTask, props.sectionName);
     }
 
-    function handleMoveTask(newSection: string, index: number) {
-        console.log("From", props.sectionName, "to", newSection);
-    }
+    function handleMoveTask(destinySection: sectionName, index: number) {
+        const movementData = {
+            currentSection: props.sectionName,
+            newSection: destinySection,
+            index: index,
+        };
+
+        props.onMovementRequest(movementData);
+    };
 
     function handleRemoveTask(index: any) {
-        let confirmacion = confirm("¿Estás seguro de que quieres eliminar esta tarea?")
-        if (confirmacion) {
-            setLista(lista.filter((_, i) => i !== index));
-        } else {
-            return;
-        }
+        props.onRemovalRequest(index, props.sectionName);
     }
 
     return (

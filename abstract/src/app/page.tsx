@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Inter } from '@next/font/google';
 import Header from "./Components/header";
-import Tasks from "./Components/tasks";
+import TaskWrapper from "./Components/task-wrapper";
 
 export default function Home() {
 
@@ -11,13 +11,7 @@ export default function Home() {
       <Header />
 
       {/* Secciones y Tareas */}
-      <div className="w-full h-full flex md:flex-row justify-between lg:gap-16 gap-10 flex-col lg:px-24 sm:px-0">
-        <Tasks sectionName="porHacer" />
-
-        <Tasks sectionName="enProceso" />
-
-        <Tasks sectionName="terminadas"/>
-      </div>
+      <TaskWrapper/>
     </main>
   );
 }
