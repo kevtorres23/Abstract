@@ -1,5 +1,5 @@
 import { Calendar, SquarePen, ArrowLeftRight, Trash } from "lucide-react";
-import Tags from "./tags";
+import Tags from "./default-tag";
 
 type taskProps = {
     title: string,

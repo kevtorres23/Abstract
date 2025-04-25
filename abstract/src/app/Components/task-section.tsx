@@ -1,9 +1,9 @@
 
 import React, { useState, useEffect } from "react";
 import SectionName from "./section-name";
-import DefaultVariant from "./default-variant";
-import EditableVariant from "./editable-variant";
-import FilledVariant from "./filled-variant";
+import DefaultVariant from "./default-task";
+import EditableVariant from "./editable-task";
+import FilledVariant from "./filled-task";
 
 // este objeto describe la estructura de una tarea
 interface Task {

@@ -2,13 +2,40 @@
 "use client";
 import React, { useState } from "react";
 import { Box, Plus, X } from "lucide-react";
+import TagList from "./tag-list";
+import EditableTag from "./editable-tag";
+
+type Tag = {
+    name: string,
+    color: string,
+}
+
+type TagListType = Tag[];
 
 function MyTagsModal() {
-
+    const [tagList, setTagList] = useState<TagListType>([]);
     const [modal, setModal] = useState(false);
+    const [editableTag, setEditableTag] = useState(false);
 
     function toggleModal() {
         setModal(!modal);
+    }
+
+    function handleAddTag(tagName: string, tagColor: string) {
+        const newTag = {
+            name: tagName,
+            color: tagColor
+        }
+
+        console.log(tagColor);
+
+        setEditableTag(!editableTag);
+
+        setTagList(t => [...t, newTag])
+    }
+
+    function handleTagEdition() {
+        setEditableTag(!editableTag);
     }
 
     return (
@@ -24,8 +51,8 @@ function MyTagsModal() {
                             <div className="flex flex-col gap-2">
                                 <div className="upper flex flex-row w-full justify-between">
                                     <div className="title flex flex-row gap-1.5 items-center">
-                                        <Box className="text-slate-700 dark:text-slate-300" size={18} strokeWidth={2.5}/>
-                                        <h1 className="text-lg font-semibold text-slate-700 dark:text-slate-300">Mis categorías</h1>
+                                        <Box className="text-slate-700 dark:text-slate-300" size={18} strokeWidth={2.5} />
+                                        <h1 className="text-lg font-semibold text-slate-700 dark:text-slate-300">Mis etiquetas</h1>
                                     </div>
 
                                     <button className="close-overlay cursor-pointer" onClick={toggleModal}>
@@ -36,11 +63,18 @@ function MyTagsModal() {
                                 <p className="text-[13px] font-normal text-slate-500 dark:text-slate-400">Haz clic en alguna de las etiquetas para editarla o eliminarla, o crea una nueva.</p>
                             </div>
 
-                            <div className="tags-container flex flex-row">
-                                <button className="flex flex-row gap-1 text-xs font-medium bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-md py-1 px-2 items-center cursor-pointer">
+                            <div className="tags-container flex flex-row gap-3">
+                                <button onClick={handleTagEdition} className="flex flex-row gap-1 text-xs font-medium bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-md py-1 px-2 items-center cursor-pointer">
                                     <Plus className="text-gray-600 dark:text-gray-400 cursor-pointer" size={14} />
-                                    Nueva categoría
+                                    Nueva etiqueta
                                 </button>
+
+                                {(editableTag) && (
+                                    <div className="absolute mt-10">
+                                        <EditableTag onAddSelected={handleAddTag} onCancelSelected={handleTagEdition} />
+                                    </div>
+                                )}
+                                <TagList list={tagList}/>
                             </div>
                         </div>
                     </div>

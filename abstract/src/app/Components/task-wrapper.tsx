@@ -39,11 +39,15 @@ function TaskWrapper() {
     function handleMoveTask(movementTaskData: movementData) {
         const prevSection = sectionListNameVariants[movementTaskData.currentSection];
         const newSection = sectionListNameVariants[movementTaskData.newSection];
-        setSectionTasks({
-            ...sectionTasks,
-            [newSection]: [...sectionTasks[newSection], sectionTasks[prevSection][movementTaskData.index]],
-            [prevSection]: sectionTasks[prevSection].filter((_, i) => i !== movementTaskData.index),
-        });
+        if (prevSection === newSection) {
+            return;
+        } else {
+            setSectionTasks({
+                ...sectionTasks,
+                [newSection]: [...sectionTasks[newSection], sectionTasks[prevSection][movementTaskData.index]],
+                [prevSection]: sectionTasks[prevSection].filter((_, i) => i !== movementTaskData.index),
+            });
+        }
     }
 
     function handleAddTask(taskContent: Task, taskSection: SectionName) {

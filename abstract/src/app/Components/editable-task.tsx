@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Tags from "./tags";
+import Tags from "./default-tag";
 import { ArrowLeft, Check } from "lucide-react";
 
 // este objeto describe la estructura de una tarea
@@ -58,8 +58,7 @@ function EditableVariant(props: EditableVariantProps) {
                     <div className="flex flex-col gap-2">
                         <p className="font-medium text-[13px] text-slate-500">Etiquetas</p>
                         <div className="flex flex-row gap-3">
-                            <Tags name="Etiqueta 1" />
-                            <Tags name="Etiqueta 2" />
+                            {/*etiquetas*/}
                         </div>
                     </div>
 
