@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Box, Plus, X } from "lucide-react";
 import TagList from "./tag-list";
 import EditableTag from "./editable-tag";
+import { useList } from "../Functions/TagListProvider";
 
 type Tag = {
     name: string,
@@ -13,7 +14,7 @@ type Tag = {
 type TagListType = Tag[];
 
 function MyTagsModal() {
-    const [tagList, setTagList] = useState<TagListType>([]);
+    const { tags, setTags } = useList();
     const [modal, setModal] = useState(false);
     const [editableTag, setEditableTag] = useState(false);
 
@@ -27,11 +28,8 @@ function MyTagsModal() {
             color: tagColor
         }
 
-        console.log(tagColor);
-
         setEditableTag(!editableTag);
-
-        setTagList(t => [...t, newTag])
+        setTags((t: TagListType) => [...t, newTag])
     }
 
     function handleTagEdition() {
@@ -74,7 +72,7 @@ function MyTagsModal() {
                                         <EditableTag onAddSelected={handleAddTag} onCancelSelected={handleTagEdition} />
                                     </div>
                                 )}
-                                <TagList list={tagList}/>
+                                <TagList/>
                             </div>
                         </div>
                     </div>

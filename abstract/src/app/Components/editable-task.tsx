@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import Tags from "./default-tag";
-import { ArrowLeft, Check } from "lucide-react";
+import React, { useState, useContext } from "react";
+import TagList from "./tag-list";
+import { ArrowLeft, Check, Plus, Tag } from "lucide-react";
 
 // este objeto describe la estructura de una tarea
 interface Task {
@@ -20,6 +20,7 @@ function EditableVariant(props: EditableVariantProps) {
     const [taskTitle, setTaskTitle] = useState("");
     const [taskDesc, setTaskDesc] = useState("");
     const [taskDate, setTaskDate] = useState("");
+    const [addTagMenu, setAddTagMenu] = useState(false);
 
     function handleTitleChange(e: any) {
         setTaskTitle(e.target.value);
@@ -35,6 +36,10 @@ function EditableVariant(props: EditableVariantProps) {
 
     function CancelTaskAddition() {
         props.onCancelSelected();
+    }
+
+    function onAddTag() {
+        setAddTagMenu(!addTagMenu);
     }
 
     function CreateTaskObject() {
@@ -58,7 +63,13 @@ function EditableVariant(props: EditableVariantProps) {
                     <div className="flex flex-col gap-2">
                         <p className="font-medium text-[13px] text-slate-500">Etiquetas</p>
                         <div className="flex flex-row gap-3">
-                            {/*etiquetas*/}
+                            <button onClick={onAddTag} className="add-task flex p-1.5 bg-main-blue-15 rounded-sm cursor-pointer"><Plus className="text-main-blue" size={16} /></button>
+                            {(addTagMenu) && (
+                                <div className="flex flex-col items-start gap-3 tag-menu p-3 absolute bg-slate-50 mt-8 border border-slate-300 rounded-lg">
+                                    <p className="text-xs font-medium text-slate-600">Selecciona las etiquetas que quieres añadir.</p>
+                                    <TagList/>
+                                </div>
+                            )}
                         </div>
                     </div>
 

@@ -24,7 +24,9 @@ function Tags(props: tagsProps) {
         fontWeight: "500",
         borderRadius: "6px",
         paddingBlock: "4px",
-        paddingInline: "8px"
+        paddingInline: "8px",
+        alignSelf: "self-start",
+
     }
 
     return(
