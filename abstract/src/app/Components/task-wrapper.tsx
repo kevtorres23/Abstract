@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import TaskSection from "./task-section";
 
+type Tag = {
+    name: string,
+    color: string,
+}
+
 interface Task {
     title: string,
     description: string,
-    date: string
+    date: string,
+    tags: Tag[],
 }
 
 type SectionLists = {
@@ -44,14 +50,13 @@ function TaskWrapper() {
         } else {
             setSectionTasks({
                 ...sectionTasks,
-                [newSection]: [...sectionTasks[newSection], sectionTasks[prevSection][movementTaskData.index]],
-                [prevSection]: sectionTasks[prevSection].filter((_, i) => i !== movementTaskData.index),
+                [newSection]: [...sectionTasks[newSection], sectionTasks[prevSection][movementTaskData.index]], // añade la tarea a la nueva sección
+                [prevSection]: sectionTasks[prevSection].filter((_, i) => i !== movementTaskData.index), // elimina la tarea de la previa sección
             });
         }
     }
 
     function handleAddTask(taskContent: Task, taskSection: SectionName) {
-        console.log("Hola");
         const sectionKey = sectionListNameVariants[taskSection]
         setSectionTasks({
             ...sectionTasks,
@@ -71,25 +76,37 @@ function TaskWrapper() {
         };
     };
 
+    function handleSaveTask(taskNewContent: Task, taskSection: SectionName, index: number) {
+        const sectionKey = sectionListNameVariants[taskSection]
+        setSectionTasks({
+            ...sectionTasks,
+            [sectionKey]: sectionTasks[sectionKey].map((task, i) => i === index ? taskNewContent : task)
+        })
+    }
+
     return (
         <div className="w-full h-full flex md:flex-row justify-between lg:gap-16 gap-10 flex-col lg:px-24 sm:px-0">
             <TaskSection sectionName="porHacer"
                 taskList={sectionTasks.porHacerList}
                 onAdditionRequest={handleAddTask}
                 onMovementRequest={handleMoveTask}
-                onRemovalRequest={handleRemoveTask}/>
+                onRemovalRequest={handleRemoveTask}
+                onSaveRequest={handleSaveTask}/>
 
             <TaskSection sectionName="enProceso"
                 taskList={sectionTasks.enProcesoList}
                 onAdditionRequest={handleAddTask}
                 onMovementRequest={handleMoveTask}
-                onRemovalRequest={handleRemoveTask}/>
+                onRemovalRequest={handleRemoveTask}
+                onSaveRequest={handleSaveTask}/>
+                
 
             <TaskSection sectionName="terminadas"
                 taskList={sectionTasks.terminadasList}
                 onAdditionRequest={handleAddTask}
                 onMovementRequest={handleMoveTask}
-                onRemovalRequest={handleRemoveTask}/>
+                onRemovalRequest={handleRemoveTask}
+                onSaveRequest={handleSaveTask}/>
         </div>
     )
 }

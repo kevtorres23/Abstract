@@ -9,8 +9,6 @@ function HeaderMenu() {
             />
 
             <MyTagsModal />
-
-            <TaskHistoryModal />
         </div>
     )
 }

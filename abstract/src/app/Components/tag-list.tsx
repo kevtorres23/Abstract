@@ -9,7 +9,7 @@ function TagList() {
     return (
         <>
             {tags.map((tag, index) => <li key={index}>
-                <Tags color={tag.color} name={tag.name} />
+                <Tags color={tag.color} name={tag.name} id={tag.id}/>
             </li>)}
         </>
     )

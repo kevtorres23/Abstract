@@ -5,11 +5,17 @@ import DefaultVariant from "./default-task";
 import EditableVariant from "./editable-task";
 import FilledVariant from "./filled-task";
 
+type Tag = {
+    name: string,
+    color: string,
+}
+
 // este objeto describe la estructura de una tarea
 interface Task {
     title: string,
     description: string,
-    date: string
+    date: string,
+    tags: Tag[],
 }
 
 // los tres diferentes tipos de secciones que se manejan en la apps
@@ -34,6 +40,7 @@ type TaskProps = {
     onAdditionRequest: (task: Task, sectionName: sectionName) => void,
     onRemovalRequest: (index: number, taskSection: sectionName) => void,
     onMovementRequest: (movementTaskData: movementData) => void,
+    onSaveRequest: (modifiedTask: Task, section: sectionName, index: number) => void;
 }
 
 function TaskSection(props: TaskProps) {
@@ -62,6 +69,10 @@ function TaskSection(props: TaskProps) {
         setTaskStatus("editable");
     }
 
+    function modifyTask() {
+        setTaskStatus("modifiable");
+    }
+
     function defaultTask() {
         setTaskStatus("default");
     }
@@ -69,6 +80,10 @@ function TaskSection(props: TaskProps) {
     function handleAddTask(newTask: Task) {
         setTaskStatus("filled");
         props.onAdditionRequest(newTask, props.sectionName);
+    }
+
+    function handleSaveTask(modifiedTask: Task, section: sectionName, index: number) {
+        props.onSaveRequest(modifiedTask, section, index);
     }
 
     function handleMoveTask(taskData: movementData) {
@@ -96,6 +111,8 @@ function TaskSection(props: TaskProps) {
                             index={index}
                             onRemoveSelected={handleRemoveTask}
                             onMoveSelected={handleMoveTask}
+                            onEditSelected={modifyTask}
+                            onSaveSelected={handleSaveTask}
                         />
                     </li>)}
                 </>
@@ -108,6 +125,8 @@ function TaskSection(props: TaskProps) {
                             index={index}
                             onRemoveSelected={handleRemoveTask}
                             onMoveSelected={handleMoveTask}
+                            onEditSelected={modifyTask}
+                            onSaveSelected={handleAddTask}
                         />
                     </li>)}
                     <EditableVariant onAddSelected={handleAddTask} onCancelSelected={defaultTask} />

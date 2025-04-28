@@ -14,7 +14,7 @@ type Tag = {
 type TagListType = Tag[];
 
 function MyTagsModal() {
-    const { tags, setTags } = useList();
+    const { tags, addTag } = useList();
     const [modal, setModal] = useState(false);
     const [editableTag, setEditableTag] = useState(false);
 
@@ -23,13 +23,9 @@ function MyTagsModal() {
     }
 
     function handleAddTag(tagName: string, tagColor: string) {
-        const newTag = {
-            name: tagName,
-            color: tagColor
-        }
 
         setEditableTag(!editableTag);
-        setTags((t: TagListType) => [...t, newTag])
+        addTag(tagName, tagColor);
     }
 
     function handleTagEdition() {

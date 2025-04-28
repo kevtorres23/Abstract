@@ -4,6 +4,7 @@ import tinycolor from "tinycolor2";
 type tagsProps = {
     name: string,
     color: string,
+    id: number,
 }
 
 function Tags(props: tagsProps) {
