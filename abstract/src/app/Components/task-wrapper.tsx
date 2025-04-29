@@ -67,7 +67,7 @@ function TaskWrapper() {
 
     function handleRemoveTask(index: number, taskSection: SectionName) {
         const sectionKey = sectionListNameVariants[taskSection];
-        let confirmacion = confirm("¿Estás seguro de que quieres eliminar esta tarea?");
+        const confirmacion = confirm("¿Estás seguro de que quieres eliminar esta tarea?");
         if (confirmacion) {
             setSectionTasks(prevData => ({
                 ...prevData,

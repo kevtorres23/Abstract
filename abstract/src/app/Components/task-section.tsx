@@ -32,7 +32,7 @@ const sectionNameVariants: Record<sectionName, React.ReactNode> = {
 type movementData = {
     currentSection: sectionName,
     newSection: sectionName,
-    index: any,
+    index: number,
 }
 
 type TaskProps = {
@@ -91,7 +91,7 @@ function TaskSection(props: TaskProps) {
         props.onMovementRequest(taskData);
     };
 
-    function handleRemoveTask(index: any) {
+    function handleRemoveTask(index: number) {
         props.onRemovalRequest(index, props.sectionName);
     }
 

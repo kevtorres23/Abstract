@@ -14,7 +14,7 @@ function SectionName(props: sectionProps) {
     function addTaskClicked() {
         setAddTask(true);
         if (props.onAddTask) {
-            props.onAddTask(true);
+            props.onAddTask(addTask);
         }
     }
 

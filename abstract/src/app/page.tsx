@@ -1,6 +1,5 @@
 "use client";
-import React, { useState } from "react";
-import { Inter } from '@next/font/google';
+import React from "react";
 import Header from "./Components/header";
 import TaskWrapper from "./Components/task-wrapper";
 
