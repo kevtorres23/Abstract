@@ -8,6 +8,7 @@ import FilledVariant from "./filled-task";
 type Tag = {
     name: string,
     color: string,
+    id: number,
 }
 
 // este objeto describe la estructura de una tarea

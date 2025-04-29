@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { History, X } from "lucide-react";
-import TaskCard from "./task-card";
 
 function TaskHistoryModal() {
 

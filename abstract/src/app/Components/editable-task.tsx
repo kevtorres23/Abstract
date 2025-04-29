@@ -55,15 +55,15 @@ function EditableVariant(props: EditableVariantProps) {
         ));
     }
 
-    function handleTitleChange(e: any) {
+    function handleTitleChange(e: React.ChangeEvent<HTMLInputElement>) {
         setTaskTitle(e.target.value);
     }
 
-    function handleDescChange(e: any) {
+    function handleDescChange(e: React.ChangeEvent<HTMLInputElement>) {
         setTaskDesc(e.target.value);
     }
 
-    function handleDateChange(e: any) {
+    function handleDateChange(e: React.ChangeEvent<HTMLInputElement>) {
         setTaskDate(e.target.value);
     }
 

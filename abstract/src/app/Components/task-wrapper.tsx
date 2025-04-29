@@ -4,6 +4,7 @@ import TaskSection from "./task-section";
 type Tag = {
     name: string,
     color: string,
+    id: number,
 }
 
 interface Task {

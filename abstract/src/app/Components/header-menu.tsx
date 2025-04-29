@@ -1,6 +1,4 @@
-import { Box, History } from 'lucide-react';
 import MyTagsModal from './my-tags-modal';
-import TaskHistoryModal from './task-history-modal';
 
 function HeaderMenu() {
     return(

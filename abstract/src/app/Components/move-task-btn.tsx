@@ -10,24 +10,20 @@ type btnProps = {
 type TaskSection = "porHacer" | "enProceso" | "terminadas";
 
 function MoveTaskBtn(props: btnProps) {
-    const [sectionName, setSectionName] = useState("");
     const [sectionMenu, setSectionMenu] = useState(false);
 
     function sendToPorHacer() {
         const name1 = "porHacer";
-        setSectionName(name1);
         props.onSectionChange(name1, props.taskIndex);
     }
 
     function sendToEnProceso() {
         const name2 = "enProceso";
-        setSectionName(name2);
         props.onSectionChange(name2, props.taskIndex);
     }
 
     function sendToTerminadas() {
         const name3 = "terminadas";
-        setSectionName(name3);
         props.onSectionChange(name3, props.taskIndex);
     }
 

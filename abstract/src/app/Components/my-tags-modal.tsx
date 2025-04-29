@@ -11,10 +11,8 @@ type Tag = {
     color: string,
 }
 
-type TagListType = Tag[];
-
 function MyTagsModal() {
-    const { tags, addTag } = useList();
+    const { addTag } = useList();
     const [modal, setModal] = useState(false);
     const [editableTag, setEditableTag] = useState(false);
 

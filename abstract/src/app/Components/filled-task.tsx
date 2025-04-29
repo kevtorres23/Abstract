@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { Calendar, Edit, SquarePen, Trash } from "lucide-react";
+import { Calendar, SquarePen, Trash } from "lucide-react";
 import MoveTaskBtn from "./move-task-btn";
 import Tags from "./default-tag";
 import EditableVariant from "./editable-task";
-import SectionName from "./section-name";
 
 type Tag = {
     name: string,
@@ -45,7 +44,7 @@ function FilledVariant(props: FilledVariantProps) {
         props.onRemoveSelected(index);
     }
 
-    function handleEditTask(index: number) {
+    function handleEditTask() {
         setIsModifiable(!isModifiable);
     }
 
@@ -94,7 +93,7 @@ function FilledVariant(props: FilledVariantProps) {
                             </div>
 
                             <div className="acciones flex flex-row gap-2">
-                                <SquarePen onClick={() => handleEditTask(props.index)} className="text-slate-600 dark:text-slate-300 hover:text-main-blue cursor-pointer" size={16} />
+                                <SquarePen onClick={() => handleEditTask} className="text-slate-600 dark:text-slate-300 hover:text-main-blue cursor-pointer" size={16} />
                                 <MoveTaskBtn onSectionChange={handleMoveTask} taskIndex={props.index} />
                                 <Trash onClick={() => handleRemoveTask(props.index)} className="text-slate-600 dark:text-slate-300 hover:text-main-blue cursor-pointer" size={16} />
                             </div>

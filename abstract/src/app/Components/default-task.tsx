@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Plus, ArrowDownWideNarrow, NotebookPen, BookCheck } from "lucide-react";
 
 const iconVariants: Record<sectionName, React.ReactNode> = {

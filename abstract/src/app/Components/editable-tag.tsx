@@ -11,11 +11,11 @@ function EditableTag(props: EditableVariantProps) {
     const [tagName, setTagName] = useState("");
     const [tagColor, setTagColor] = useState("#FFFFFF");
 
-    function handleNameChange(e: any) {
+    function handleNameChange(e: React.ChangeEvent<HTMLInputElement>) {
         setTagName(e.target.value);
     }
 
-    function handleColorChange(e: any) {
+    function handleColorChange(e: React.ChangeEvent<HTMLInputElement>) {
         setTagColor(e.target.value);
     }
 
