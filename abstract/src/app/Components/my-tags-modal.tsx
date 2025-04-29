@@ -6,11 +6,6 @@ import TagList from "./tag-list";
 import EditableTag from "./editable-tag";
 import { useList } from "../Functions/TagListProvider";
 
-type Tag = {
-    name: string,
-    color: string,
-}
-
 function MyTagsModal() {
     const { addTag } = useList();
     const [modal, setModal] = useState(false);
