@@ -47,8 +47,6 @@ function EditableVariant(props: EditableVariantProps) {
         tagComparison();
     }, [taskTags, tags]);
 
-    console.log(chooseTags, taskTags);
-
     function tagComparison() {
         setChooseTags(tags.filter(
             (chooseTag) => !taskTags.some((taskTag) => taskTag.id === chooseTag.id)
@@ -113,7 +111,7 @@ function EditableVariant(props: EditableVariantProps) {
             <div className="w-full gap-5 flex flex-col bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg">
                 <div className="contenido w-full flex flex-col gap-5">
                     <div className="px-5 py-6 border-b-1 border-b-slate-300 dark:border-b-slate-700">
-                        <p className="font-semibold text-sm text-slate-800 dark:text-slate-200">Crear una tarea.</p>
+                        <p className="font-semibold text-sm text-slate-800 dark:text-slate-200">{props.onModifySelected === true ? "Modificar tarea" : "Crear una tarea"}</p>
                     </div>
 
                     <div className="task-required-sections px-5 pb-3 flex flex-col gap-4">
@@ -163,7 +161,7 @@ function EditableVariant(props: EditableVariantProps) {
                         </button>
                         <button onClick={CreateTaskObject} className="flex gap-1 w-full items-center justify-center flex-row py-2 cursor-pointer rounded-md bg-main-blue">
                             <Check className="text-white cursor-pointer" size={16} />
-                            <p className="text-white text-xs">Crear tarea</p>
+                            <p className="text-white text-xs">{props.onModifySelected === true ? "Guardar" : "Crear tarea"}</p>
                         </button>
                     </div>
                 </div>

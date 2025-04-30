@@ -93,7 +93,7 @@ function FilledVariant(props: FilledVariantProps) {
                             </div>
 
                             <div className="acciones flex flex-row gap-2">
-                                <SquarePen onClick={() => handleEditTask} className="text-slate-600 dark:text-slate-300 hover:text-main-blue cursor-pointer" size={16} />
+                                <SquarePen onClick={handleEditTask} className="text-slate-600 dark:text-slate-300 hover:text-main-blue cursor-pointer" size={16} />
                                 <MoveTaskBtn onSectionChange={handleMoveTask} taskIndex={props.index} />
                                 <Trash onClick={() => handleRemoveTask(props.index)} className="text-slate-600 dark:text-slate-300 hover:text-main-blue cursor-pointer" size={16} />
                             </div>
