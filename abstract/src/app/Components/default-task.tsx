@@ -14,7 +14,7 @@ const descriptionVariants: Record<sectionName, string> = { //sectionName: porHac
     terminadas: "Añade o mueve a esta sección las tareas que ya fueron completadas o entregadas."
 };
 
-// los tres diferentes tipos de secciones que se manejan en la apps
+// los tres diferentes tipos de secciones que se manejan en la app
 type sectionName = "porHacer" | "enProceso" | "terminadas";
 
 type DefaultVariantProps = {

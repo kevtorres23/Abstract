@@ -78,6 +78,10 @@ function TaskSection(props: TaskProps) {
         setTaskStatus("default");
     }
 
+    function filledTask() {
+        setTaskStatus("filled");
+    }
+
     function handleAddTask(newTask: Task) {
         setTaskStatus("filled");
         props.onAdditionRequest(newTask, props.sectionName);
@@ -130,7 +134,7 @@ function TaskSection(props: TaskProps) {
                             onSaveSelected={handleAddTask}
                         />
                     </li>)}
-                    <EditableVariant onAddSelected={handleAddTask} onCancelSelected={defaultTask} />
+                    <EditableVariant onAddSelected={handleAddTask} onCancelSelected={filledTask} />
                 </>
             )}
         </div>
