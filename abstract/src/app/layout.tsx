@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "./Functions/ThemeProvider";
 import { TagListProvider } from "./Functions/TagListProvider";
+import { TaskListProvider } from "./Functions/TasksProvider";
 
 export const metadata: Metadata = {
   title: "Abstract",
@@ -18,7 +19,9 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <TagListProvider>
-            {children}
+            <TaskListProvider>
+              {children}
+            </TaskListProvider>
           </TagListProvider>
         </ThemeProvider>
       </body>

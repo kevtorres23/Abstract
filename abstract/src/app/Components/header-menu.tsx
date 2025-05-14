@@ -1,4 +1,5 @@
 import MyTagsModal from './my-tags-modal';
+import TaskHistoryModal from './task-history-modal';
 
 function HeaderMenu() {
     return(
@@ -7,6 +8,7 @@ function HeaderMenu() {
             />
 
             <MyTagsModal />
+            <TaskHistoryModal />
         </div>
     )
 }

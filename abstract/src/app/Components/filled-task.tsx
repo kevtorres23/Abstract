@@ -3,6 +3,7 @@ import { Calendar, SquarePen, Trash } from "lucide-react";
 import MoveTaskBtn from "./move-task-btn";
 import Tags from "./default-tag";
 import EditableVariant from "./editable-task";
+import { useTaskList } from "../Functions/TasksProvider";
 
 type Tag = {
     name: string,
@@ -38,10 +39,13 @@ type FilledVariantProps = {
 
 function FilledVariant(props: FilledVariantProps) {
 
+    const { addTask } = useTaskList();
+
     const [isModifiable, setIsModifiable] = useState(false);
 
-    function handleRemoveTask(index: number) {
+    function handleRemoveTask(index: number, taskContent: Task) {
         props.onRemoveSelected(index);
+        addTask(taskContent);
     }
 
     function handleEditTask() {
@@ -95,7 +99,7 @@ function FilledVariant(props: FilledVariantProps) {
                             <div className="acciones flex flex-row gap-2">
                                 <SquarePen onClick={handleEditTask} className="text-slate-600 dark:text-slate-300 hover:text-main-blue cursor-pointer" size={16} />
                                 <MoveTaskBtn onSectionChange={handleMoveTask} taskIndex={props.index} />
-                                <Trash onClick={() => handleRemoveTask(props.index)} className="text-slate-600 dark:text-slate-300 hover:text-main-blue cursor-pointer" size={16} />
+                                <Trash onClick={() => handleRemoveTask(props.index, props.tarea)} className="text-slate-600 dark:text-slate-300 hover:text-main-blue cursor-pointer" size={16} />
                             </div>
                         </div>
                     </div>

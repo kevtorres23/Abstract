@@ -1,8 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import { History, X } from "lucide-react";
+import { useTaskList } from "../Functions/TasksProvider";
+import HistoryTask from "./history-task";
 
 function TaskHistoryModal() {
+
+    const { tasks } = useTaskList();
 
     const [modal, setModal] = useState(false);
 
@@ -36,6 +40,10 @@ function TaskHistoryModal() {
                             </div>
 
                             <div className="tasks-container flex flex-row">
+                                {tasks.map((tarea, index) => <li key={index}>
+                                    <HistoryTask taskContent={tarea}
+                                    />
+                                </li>)}
                             </div>
                         </div>
                     </div>
