@@ -85,7 +85,7 @@ function FilledVariant(props: FilledVariantProps) {
                             </li>)}
                         </div>
 
-                        <div className="contenido w-full flex flex-col gap-1">
+                        <div className="contenido w-full flex flex-col gap-1 wrap-break-word">
                             <h1 className="text-slate-800 dark:text-slate-300 text-md font-bold">{props.tarea.title}</h1>
                             <p className="text-slate-600 dark:text-slate-400 text-sm font-normal">{props.tarea.description}</p>
                         </div>

@@ -29,8 +29,8 @@ function DefaultVariant(props: DefaultVariantProps) {
     }
 
     return (
-        <div className="w-full sm:p-6 p-4 gap-5 flex flex-col bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg">
-            <div className="contenido w-full flex flex-col gap-5">
+        <div className="w-full sm:p-6 p-4 gap-5 flex flex-col max-w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg">
+            <div className="contenido w-full flex flex-col gap-5 wrap-break-word">
                 <div className="p-2 rounded-lg bg-main-blue-15 self-start">{iconVariants[props.sectionName]}</div>
                 <p className="text-slate-600 dark:text-slate-400 text-[13px] font-normal">{descriptionVariants[props.sectionName]}</p>
                 <button onClick={editableTask} className="flex gap-3 md:self-auto sm:self-start self-auto lg:px-5 md:px-2 px-5 items-center justify-center flex-row py-2.5 cursor-pointer rounded-md bg-main-blue">

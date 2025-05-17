@@ -86,7 +86,7 @@ function TaskWrapper() {
     }
 
     return (
-        <div className="w-full h-full flex md:flex-row justify-between lg:gap-16 gap-10 flex-col lg:px-24 sm:px-0">
+        <div className="grid md:grid-cols-3 grid-cols-1 justify-between lg:gap-16 gap-10 lg:px-24 sm:px-0">
             <TaskSection sectionName="porHacer"
                 taskList={sectionTasks.porHacerList}
                 onAdditionRequest={handleAddTask}

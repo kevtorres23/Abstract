@@ -100,43 +100,45 @@ function TaskSection(props: TaskProps) {
     }
 
     return (
-        <div className="w-full flex flex-col gap-5">
+        <div className="w-full flex flex-col gap-5 ">
             <SectionName name={sectionNameVariants[props.sectionName]} taskCounter={lista.length} onAddTask={editableTask} />
-            {(lista.length === 0 && taskStatus === "default") && (
-                <DefaultVariant sectionName={props.sectionName} onEditSelected={editableTask} />
+            <div className="grid md:grid-cols-1 sm:grid-cols-2 grid-cols-1">
+                {(lista.length === 0 && taskStatus === "default") && (
+                    <DefaultVariant sectionName={props.sectionName} onEditSelected={editableTask} />
 
-            )} {(lista.length === 0 && taskStatus === "editable") && (
-                <EditableVariant onAddSelected={handleAddTask} onCancelSelected={defaultTask} />
+                )} {(lista.length === 0 && taskStatus === "editable") && (
+                    <EditableVariant onAddSelected={handleAddTask} onCancelSelected={defaultTask} />
 
-            )} {(lista.length >= 1 && taskStatus === "filled") && (
-                <>
-                    {lista.map((tarea, index) => <li key={index}>
-                        <FilledVariant currentSection={props.sectionName}
-                            tarea={tarea}
-                            index={index}
-                            onRemoveSelected={handleRemoveTask}
-                            onMoveSelected={handleMoveTask}
-                            onEditSelected={modifyTask}
-                            onSaveSelected={handleSaveTask}
-                        />
-                    </li>)}
-                </>
-            )}
-            {(lista.length >= 1 && taskStatus === "editable") && (
-                <>
-                    {lista.map((tarea, index) => <li key={index}>
-                        <FilledVariant currentSection={props.sectionName}
-                            tarea={tarea}
-                            index={index}
-                            onRemoveSelected={handleRemoveTask}
-                            onMoveSelected={handleMoveTask}
-                            onEditSelected={modifyTask}
-                            onSaveSelected={handleAddTask}
-                        />
-                    </li>)}
-                    <EditableVariant onAddSelected={handleAddTask} onCancelSelected={filledTask} />
-                </>
-            )}
+                )} {(lista.length >= 1 && taskStatus === "filled") && (
+                    <>
+                        {lista.map((tarea, index) => <li key={index}>
+                            <FilledVariant currentSection={props.sectionName}
+                                tarea={tarea}
+                                index={index}
+                                onRemoveSelected={handleRemoveTask}
+                                onMoveSelected={handleMoveTask}
+                                onEditSelected={modifyTask}
+                                onSaveSelected={handleSaveTask}
+                            />
+                        </li>)}
+                    </>
+                )}
+                {(lista.length >= 1 && taskStatus === "editable") && (
+                    <>
+                        {lista.map((tarea, index) => <li key={index}>
+                            <FilledVariant currentSection={props.sectionName}
+                                tarea={tarea}
+                                index={index}
+                                onRemoveSelected={handleRemoveTask}
+                                onMoveSelected={handleMoveTask}
+                                onEditSelected={modifyTask}
+                                onSaveSelected={handleAddTask}
+                            />
+                        </li>)}
+                        <EditableVariant onAddSelected={handleAddTask} onCancelSelected={filledTask} />
+                    </>
+                )}
+            </div>
         </div>
     )
 }
